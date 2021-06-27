@@ -2,8 +2,8 @@
 
 t_spec	*init_spec(const char *str, int *start)
 {
-	t_spec result;
-	
+	t_spec	*result;
+
 	result = ft_calloc(1, sizeof(t_spec));
 	if (!result)
 		return (0);
@@ -16,6 +16,7 @@ t_spec	*init_spec(const char *str, int *start)
 	result->width = get_width(str, start);
 	result->precision = get_precision(str, start);
 	result->option = get_opt(str, start);
+	return (result);
 }
 
 void	free_spec(t_spec *spec)

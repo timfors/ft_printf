@@ -18,10 +18,11 @@ int	ft_printf(const char *input, ...)
 		write(1, (char *)input + last, start - last);
 		res += start - last;
 		spec = init_spec(input, &start);
-		if (process_spec(input, list, *spec) == -1)
+		if (process_spec(list, *spec) == -1)
 			return (-1);
-		free_spec(spec);
-		last = start;
+		if (spec->opt)
+			last = start;
+		free(spec);
 	}
 	write(1, (char *)input + last, start - last);
 	res += start - last;
