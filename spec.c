@@ -19,6 +19,13 @@ t_spec	*init_spec(const char *str, int *start)
 	return (result);
 }
 
+void	change_spec_val(t_spec *spec, char *new_val)
+{
+	if (spec->str_val)
+		free(spec->str_val);
+	spec->str_val = new_val;
+}
+
 void	free_spec(t_spec *spec)
 {
 	if (spec->flags)
@@ -26,4 +33,11 @@ void	free_spec(t_spec *spec)
 	if (spec->str_val)
 		free(spec->str_val);
 	free(spec);
+}
+
+int	is_digit_option(t_spec *spec)
+{
+	return (spec->option == 'x' || spec->option == 'X'
+		|| spec->option == 'd' || spec->option == 'i'
+		|| spec->option == 'u' || spec->option == 'o');
 }

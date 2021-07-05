@@ -7,7 +7,7 @@ int	get_precision(const char *str, int *start)
 	char	current;
 
 	if (str[*start] != '.')
-		return (0);
+		return (-2);
 	i = 1;
 	res = 0;
 	current = str[*start + i];
